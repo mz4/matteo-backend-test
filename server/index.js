@@ -1,5 +1,5 @@
 // server/index.js
-
+const axios = require('axios');
 const express = require("express");
 
 const PORT = process.env.PORT || 3001;
@@ -7,7 +7,25 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.get("/api", (req, res) => {
-  res.json({ message: 'hello'});
+  const endpoint = 'https://reference.intellisense.io/thickenernn/v1/referencia';
+  axios.get(endpoint)
+  .then(response => {
+    const dataLoad = [];
+    const tkData = response.data.current.data.TK1;
+    for (const key of Object.keys(tkData)) {
+      if (key.startsWith("TK1_")) {
+        dataLoad.push({
+          metric: key,
+          times: tkData[key]["times"],
+          values: tkData[key]["values"]
+        });
+      }
+    }
+    res.send(dataLoad);
+  })
+  .catch(error => {
+      console.log(error);
+  });
 })
 
 app.listen(PORT, () => {
