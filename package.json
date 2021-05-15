@@ -1,0 +1,24 @@
+{
+  "name": "matteo-backend-test",
+  "version": "1.0.0",
+  "description": "Matteo Backend Test",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mz4/matteo-backend-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mz4/matteo-backend-test/issues"
+  },
+  "homepage": "https://github.com/mz4/matteo-backend-test#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
