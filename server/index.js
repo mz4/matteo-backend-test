@@ -12,13 +12,16 @@ app.get("/api", (req, res) => {
   .then(response => {
     const dataLoad = [];
     const tkData = response.data.current.data.TK1;
+    let id = 0;
     for (const key of Object.keys(tkData)) {
       if (key.startsWith("TK1_")) {
         dataLoad.push({
+          id: id,
           metric: key,
           times: tkData[key]["times"],
           values: tkData[key]["values"]
         });
+        id = id + 1;
       }
     }
     res.send(dataLoad);
