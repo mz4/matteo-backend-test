@@ -1,10 +1,12 @@
 // server/index.js
 const axios = require('axios');
+var cors = require('cors')
 const express = require("express");
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
+app.use(cors());
 
 app.get("/api", (req, res) => {
   const endpoint = 'https://reference.intellisense.io/thickenernn/v1/referencia';
